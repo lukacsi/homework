@@ -2,7 +2,7 @@
 ```bash
 g++ main.cpp -o server
 ```
-Building docker
+Building docker image
 ```bash
 docker build . -t hello-world
 ```
