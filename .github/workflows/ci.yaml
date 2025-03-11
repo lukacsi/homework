@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [master]
 
+permissions:
+  packages: write
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: hello-world
@@ -33,7 +36,6 @@ jobs:
         with:
           context: .
           push: true
-          # If a tag push, use the tag name; otherwise, tag as "latest"
           tags: |
-            ghcr.io/${{ github.repository }}:${{ github.ref_name }}
-            ghcr.io/${{ github.repository }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
