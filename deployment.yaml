@@ -1,20 +1,19 @@
-# deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-deployment
+  name: homework-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-world
+      app: homework
   template:
     metadata:
       labels:
-        app: hello-world
+        app: homework
     spec:
       containers:
-      - name: hello-world
+      - name: homework
         image: ghcr.io/lukacsi/homework:latest
         ports:
         - containerPort: 80
@@ -22,11 +21,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-world-service
+  name: homework-service
 spec:
   type: NodePort
   selector:
-    app: hello-world
+    app: homework
   ports:
   - protocol: TCP
     port: 80

@@ -1,4 +1,4 @@
-# Building 
+# Building
 ```bash
 g++ main.cpp -o server
 ```

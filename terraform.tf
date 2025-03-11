@@ -11,11 +11,11 @@ provider "kubernetes" {
   config_path = "~/.kube/config"
 }
 
-resource "kubernetes_deployment" "hello_world" {
+resource "kubernetes_deployment" "homework" {
   metadata {
-    name = "hello-world-deployment"
+    name = "homework-deployment"
     labels = {
-      app = "hello-world"
+      app = "homework"
     }
   }
 
@@ -24,20 +24,20 @@ resource "kubernetes_deployment" "hello_world" {
 
     selector {
       match_labels = {
-        app = "hello-world"
+        app = "homework"
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "hello-world"
+          app = "homework"
         }
       }
 
       spec {
         container {
-          name  = "hello-world"
+          name  = "homework"
           image = "ghcr.io/lukacsi/homework:latest"
           port {
             container_port = 80
@@ -48,15 +48,15 @@ resource "kubernetes_deployment" "hello_world" {
   }
 }
 
-resource "kubernetes_service" "hello_world" {
+resource "kubernetes_service" "homework" {
   metadata {
-    name = "hello-world-service"
+    name = "homework-service"
   }
 
   spec {
     type = "NodePort"
     selector = {
-      app = "hello-world"
+      app = "homework"
     }
 
     port {
